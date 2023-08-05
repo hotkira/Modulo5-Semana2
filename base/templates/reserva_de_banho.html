@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aula sobre DJANGO</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+   
+<main>
+  {% block principal %}
+    <div class="container">
+      <h1 class="text-center">
+        Reserve o banho
+      </h1>
+    
+      {% if sucesso %}
+        <div class="alert alert-success" role="alert">
+          Sus reserva  foi feita com sucesso!
+        </div>
+      {% else %}
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% load bootstrap5 %}
+          {% bootstrap_form form %}
+          <button type="submit" class="btn btn-primary">Reservar</button>
+        </form>
+      {% endif %}
+    </div>
+  {% endblock %}
+
+</main>
+  </body>
+</html>
